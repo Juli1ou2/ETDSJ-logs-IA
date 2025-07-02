@@ -1,6 +1,6 @@
 html {
   font-family: "Comic Sans MS", Helvetica, Arial, sans-serif;
-  background: #e8f6ff;
+  background: #F4EBE8;
   padding: 1rem;
 }
 body {
@@ -9,6 +9,7 @@ body {
 
 h1 {
   margin: auto;
+  color: #207368;
 }
 
 input, button {
@@ -17,7 +18,7 @@ input, button {
 
 #chat {
   margin-top: 2em;
-  border: 2px solid #1a1a1a;
+  border: 2px solid #207368;
   border-radius: 5px;
   padding: 10px;
   height: 300px;
@@ -34,18 +35,26 @@ input, button {
   width: 100%;
   height: 25px;
   margin-right: 1em;
-  border: 2px solid #1a1a1a;
+  border: 2px solid #207368;
   border-radius: 5px;
 }
 
 #send-btn {
   width: 10%;
+  border: 2px solid #207368;
+  border-radius: 5px;
+  background-color: #BFEFE7;
+}
+
+#send-btn:hover{
+  background-color: #207368;
+  color: white;
 }
 
 .user {
-  color: blue;
+  color: #0353A4;
 }
 
 .bot {
-  color: green;
+  color: #F26419;
 }
