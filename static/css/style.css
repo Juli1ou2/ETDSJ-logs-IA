@@ -6,3 +6,46 @@ html {
 body {
   margin: 0 auto;
 }
+
+h1 {
+  margin: auto;
+}
+
+input, button {
+  font-family: inherit;
+}
+
+#chat {
+  margin-top: 2em;
+  border: 2px solid #1a1a1a;
+  border-radius: 5px;
+  padding: 10px;
+  height: 300px;
+  overflow-y: scroll;
+}
+
+#input-container {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 1em;
+}
+
+#user-input {
+  width: 100%;
+  height: 25px;
+  margin-right: 1em;
+  border: 2px solid #1a1a1a;
+  border-radius: 5px;
+}
+
+#send-btn {
+  width: 10%;
+}
+
+.user {
+  color: blue;
+}
+
+.bot {
+  color: green;
+}
