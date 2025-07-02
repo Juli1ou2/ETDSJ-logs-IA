@@ -56,65 +56,82 @@ class Spinner:
         self.thread.join()
 
 # === CHARGEMENT DU MODÈLE ===
-print("⏳ Chargement du modèle...")
-try:
-    llm = Llama(
-        model_path=MODEL_PATH,
-        n_ctx=N_CTX,
-        n_threads=N_THREADS,
-        n_gpu_layers=32,
-        verbose=False
-    )
-    print("✅ Modèle chargé.")
-except Exception as e:
-    print(f"❌ Erreur lors du chargement du modèle : {str(e)}")
-    sys.exit(1)
-
-# === BOUCLE PRINCIPALE ===
-print("\n🧠 Entrez une question sur les logs Apache (tape 'exit' pour quitter):\n")
-while True:
+def loadModel():
+    print("⏳ Chargement du modèle...")
     try:
-        user_input = input("👤 Vous: ").strip()
-    except (EOFError, KeyboardInterrupt):
-        print("\n👋 Fin de session.")
-        break
-
-    if not user_input:
-        print("❗ Veuillez entrer une question.")
-        continue
-
-    if user_input.lower() in ["exit", "quit"]:
-        print("👋 À bientôt !")
-        break
-
-    logs_text = read_logs()
-
-    # ✅ Nouveau prompt sans tokens spéciaux
-    prompt = (
+        llm = Llama(
+            model_path=MODEL_PATH,
+            n_ctx=N_CTX,
+            n_threads=N_THREADS,
+            n_gpu_layers=32,
+            verbose=False
+        )
+        print("✅ Modèle chargé.")
+        return llm
+    except Exception as e:
+        print(f"❌ Erreur lors du chargement du modèle : {str(e)}")
+        sys.exit(1)
+        
+def newPrompt(logs_text, user_input):
+    return (
         f"You are an expert assistant in Apache log analysis.\n"
         f"Here is a snippet of the logs:\n{logs_text}\n\n"
         f"Question: {user_input}\n"
         f"Answer clearly and concisely only.\n"
         f"Answer:"
     )
+    
+def getResponseFromModel(llm, prompt):
+    output = llm(
+        prompt,
+        max_tokens=256,
+        temperature=0.3
+    )
+    return output.get("choices", [{}])[0].get("text", "").strip()
 
-    spinner = Spinner()
-    spinner.start()
-    try:
-        output = llm(
-            prompt,
-            max_tokens=256,
-            temperature=0.3
-            # ✅ stop supprimé temporairement
-        )
-        spinner.stop()
 
-        response = output.get("choices", [{}])[0].get("text", "").strip()
-        if not response or len(response.replace("\n", "")) < 3:
-            print("\n🤖 Qwen: (réponse vide ou invalide)\n")
-        else:
-            print(f"\n🤖 Qwen: {response}\n")
+# === BOUCLE PRINCIPALE ===
+def runChat(llm):
+    print("\n🧠 Entrez une question sur les logs Apache (tape 'exit' pour quitter):\n")
+    while True:
+        try:
+            user_input = input("👤 Vous: ").strip()
+        except (EOFError, KeyboardInterrupt):
+            print("\n👋 Fin de session.")
+            break
 
-    except Exception as e:
-        spinner.stop()
-        print(f"\n❌ Erreur lors de la génération : {str(e)}\n")
+        if not user_input:
+            print("❗ Veuillez entrer une question.")
+            continue
+
+        if user_input.lower() in ["exit", "quit"]:
+            print("👋 À bientôt !")
+            break
+
+        logs_text = read_logs()
+
+        # ✅ Nouveau prompt sans tokens spéciaux
+        prompt = newPrompt(logs_text, user_input)
+
+        spinner = Spinner()
+        spinner.start()
+        try:
+            response = getResponseFromModel(llm, prompt)
+            
+            spinner.stop()
+            if not response or len(response.replace("\n", "")) < 3:
+                print("\n🤖 Qwen: (réponse vide ou invalide)\n")
+            else:
+                print(f"\n🤖 Qwen: {response}\n")
+
+        except Exception as e:
+            spinner.stop()
+            print(f"\n❌ Erreur lors de la génération : {str(e)}\n")
+
+
+def main():
+    llm = loadModel()
+    runChat(llm)
+            
+if __name__ == "__main__":
+    main()
