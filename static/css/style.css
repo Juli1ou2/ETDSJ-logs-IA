@@ -1,10 +1,12 @@
 html {
   font-family: "Comic Sans MS", Helvetica, Arial, sans-serif;
   background: #f4ebe8;
-  padding: 1rem;
+  height: 100%;
 }
+
 body {
   margin: 0 auto;
+  height: 100%;
 }
 
 h1 {
@@ -23,6 +25,26 @@ button {
 
 legend {
   color: #207368;
+}
+
+header {
+  padding: 1rem;
+}
+
+footer {
+  text-align: center;
+  padding: 1rem;
+  color: #207368;
+}
+
+#main-container {
+  min-height: 100%;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+}
+
+#page-container {
+  padding: 1rem;  
 }
 
 #chat {
