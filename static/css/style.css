@@ -1,6 +1,6 @@
 html {
   font-family: "Comic Sans MS", Helvetica, Arial, sans-serif;
-  background: #F4EBE8;
+  background: #f4ebe8;
   padding: 1rem;
 }
 body {
@@ -16,8 +16,13 @@ p {
   margin: auto;
 }
 
-input, button {
+input,
+button {
   font-family: inherit;
+}
+
+legend {
+  color: #207368;
 }
 
 #chat {
@@ -46,21 +51,21 @@ input, button {
   width: 10%;
   border: 2px solid #207368;
   border-radius: 5px;
-  background-color: #BFEFE7;
+  background-color: #bfefe7;
 }
 
-#send-btn:hover{
+#send-btn:hover {
   background-color: #207368;
   color: white;
 }
 
-#send-btn:active{
-  background-color: #1B5F56;
+#send-btn:active {
+  background-color: #1b5f56;
   color: white;
 }
 
 #thinking-div {
-  margin: 1em 0 5px 0;
+  margin: 1em 0 8px 0;
   display: flex;
   align-items: center;
 }
@@ -69,24 +74,27 @@ input, button {
   width: 28px;
   margin-left: 10px;
   aspect-ratio: 4;
-  --_g: no-repeat radial-gradient(circle closest-side,#000 90%,#0000);
-  background: 
-    var(--_g) 0%   50%,
-    var(--_g) 50%  50%,
-    var(--_g) 100% 50%;
-  background-size: calc(100%/3) 100%;
+  --_g: no-repeat radial-gradient(circle closest-side, #000 90%, #0000);
+  background: var(--_g) 0% 50%, var(--_g) 50% 50%, var(--_g) 100% 50%;
+  background-size: calc(100% / 3) 100%;
   animation: l7 1s infinite linear;
 }
 @keyframes l7 {
-    33%{background-size:calc(100%/3) 0%  ,calc(100%/3) 100%,calc(100%/3) 100%}
-    50%{background-size:calc(100%/3) 100%,calc(100%/3) 0%  ,calc(100%/3) 100%}
-    66%{background-size:calc(100%/3) 100%,calc(100%/3) 100%,calc(100%/3) 0%  }
+  33% {
+    background-size: calc(100% / 3) 0%, calc(100% / 3) 100%, calc(100% / 3) 100%;
+  }
+  50% {
+    background-size: calc(100% / 3) 100%, calc(100% / 3) 0%, calc(100% / 3) 100%;
+  }
+  66% {
+    background-size: calc(100% / 3) 100%, calc(100% / 3) 100%, calc(100% / 3) 0%;
+  }
 }
 
 .user {
-  color: #0353A4;
+  color: #0353a4;
 }
 
 .bot {
-  color: #F26419;
+  color: #f26419;
 }
