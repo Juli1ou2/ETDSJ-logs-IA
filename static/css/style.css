@@ -26,6 +26,7 @@ legend {
 }
 
 #chat {
+  font-family: 'Lucida Console';
   margin-top: 2em;
   border: 2px solid #207368;
   border-radius: 5px;
@@ -68,6 +69,16 @@ legend {
   margin: 1em 0 8px 0;
   display: flex;
   align-items: center;
+}
+
+#logs {
+  font-family: 'Lucida Console';
+  margin-top: 2em;
+  border: 2px solid #207368;
+  border-radius: 5px;
+  padding: 10px;
+  height: 300px;
+  overflow: scroll;
 }
 
 .loader {

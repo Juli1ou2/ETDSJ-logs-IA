@@ -30,3 +30,9 @@ def ask():
         bot_response = f"\n❌ Erreur lors de la génération : {str(e)}"
     
     return jsonify({"response": bot_response})
+
+@app.route("/logs", methods=["GET"])
+def getLogs():
+    logs_text = read_logs()
+    print(f"\n\n{logs_text}\n\n")
+    return jsonify({"response": logs_text})
