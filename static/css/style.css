@@ -10,7 +10,8 @@ body {
 }
 
 h1 {
-  margin: auto;
+  margin-top: auto;
+  margin-bottom: auto;
   color: #207368;
 }
 
@@ -29,6 +30,9 @@ legend {
 
 header {
   padding: 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 footer {

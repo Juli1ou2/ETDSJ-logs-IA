@@ -16,8 +16,15 @@
   <div id="main-container">
     <header>
       <h1>{{appName}}</h1>
+      <img
+        src="{{ url_for('static', filename='img/profile.png') }}"
+        class="profile-icon"
+        alt="profile icon"
+        width="40"
+        height="40"
+      />
     </header>
-  
+
     <div id="page-container">
       <fieldset id="chat"><legend>chatbot</legend></fieldset>
       <div id="thinking-div">
@@ -35,7 +42,7 @@
       </div>
       <fieldset id="logs"><legend>logs</legend></fieldset>
     </div>
-  
+
     <footer>
       <p>ETDSJ - {{appName}}® 2025 - v1.0.0</p>
     </footer>
