@@ -1,0 +1,8 @@
+- Quelles sont les pages "not found" (erreurs 404) ?
+- Y a-t-il des erreurs 500 dans les logs ?
+- Quels sont les IPs qui font le plus de requêtes ?
+- Quels sont les URL les plus demandés ?
+- Quelle est la taille moyenne des réponses ?
+- Y a-t-il des erreurs de timeout ?
+- Quel est le temps moyen de réponse ?
+- Y a-t-il des redirections (301, 302) fréquentes ?

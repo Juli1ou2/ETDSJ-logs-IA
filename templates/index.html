@@ -20,25 +20,25 @@
         src="{{ url_for('static', filename='img/profile.png') }}"
         class="profile-icon"
         alt="profile icon"
-        width="40"
-        height="40"
+        width="32"
+        height="32"
       />
     </header>
 
     <div id="page-container">
       <fieldset id="chat"><legend>chatbot</legend></fieldset>
       <div id="thinking-div">
-        <div><p>Loggy 🤖 is thinking</p></div>
+        <div><p>Loggy 🤖 réfléchit à son rythme</p></div>
         <div class="loader"></div>
       </div>
       <div id="input-container">
         <input
           id="user-input"
           type="text"
-          placeholder="Ask your question here..."
+          placeholder="Posez votre question..."
           autofocus
         />
-        <button id="send-btn">SEND</button>
+        <button id="send-btn">ENVOYER</button>
       </div>
       <fieldset id="logs"><legend>logs</legend></fieldset>
     </div>
@@ -67,7 +67,7 @@
     }
 
     function addLogs(logsText) {
-      logsText.split("\n").forEach((line) => {
+      logsText.forEach((line) => {
         const div = document.createElement("div");
         div.className = "user";
         div.textContent = line;
